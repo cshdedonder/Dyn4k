@@ -1,5 +1,6 @@
 package dyn4k
 
+import dyn4k.inject.inject
 import org.dyn4j.geometry.*
 
 data class PColor(val red: Int, val green: Int, val blue: Int, val alpha: Int = 255) {
@@ -42,7 +43,8 @@ class ImplChild : Child {
     override val parent: DynApplet by inject()
 }
 
-class PCircle(radius: Double, private val config: RenderConfig = RenderConfig.default) : Circle(radius), Drawable, Child by ImplChild() {
+class PCircle(radius: Double, private val config: RenderConfig = RenderConfig.default)
+    : Circle(radius), Drawable, Child by ImplChild() {
 
     override fun draw() {
         Drawable.base(parent, config)
@@ -52,7 +54,8 @@ class PCircle(radius: Double, private val config: RenderConfig = RenderConfig.de
     }
 }
 
-class PCapsule(width: Double, height: Double, private val config: RenderConfig = RenderConfig.default) : Capsule(width, height), Drawable, Child by ImplChild() {
+class PCapsule(width: Double, height: Double, private val config: RenderConfig = RenderConfig.default)
+    : Capsule(width, height), Drawable, Child by ImplChild() {
 
     override fun draw() {
         Drawable.base(parent, config)
@@ -60,7 +63,8 @@ class PCapsule(width: Double, height: Double, private val config: RenderConfig =
     }
 }
 
-class PEllipse(width: Double, height: Double, private val config: RenderConfig = RenderConfig.default) : Ellipse(width, height), Drawable, Child by ImplChild() {
+class PEllipse(width: Double, height: Double, private val config: RenderConfig = RenderConfig.default)
+    : Ellipse(width, height), Drawable, Child by ImplChild() {
 
     override fun draw() {
         Drawable.base(parent, config)
@@ -68,7 +72,8 @@ class PEllipse(width: Double, height: Double, private val config: RenderConfig =
     }
 }
 
-class PHalfEllipse(width: Double, height: Double, private val config: RenderConfig = RenderConfig.default) : HalfEllipse(width, height), Drawable, Child by ImplChild() {
+class PHalfEllipse(width: Double, height: Double, private val config: RenderConfig = RenderConfig.default)
+    : HalfEllipse(width, height), Drawable, Child by ImplChild() {
 
     override fun draw() {
         Drawable.base(parent, config)
@@ -76,7 +81,8 @@ class PHalfEllipse(width: Double, height: Double, private val config: RenderConf
     }
 }
 
-class PPolygon(vararg vertices: Vector2, private val config: RenderConfig = RenderConfig.default) : Polygon(*vertices), Drawable, Child by ImplChild() {
+class PPolygon(vararg vertices: Vector2, private val config: RenderConfig = RenderConfig.default)
+    : Polygon(*vertices), Drawable, Child by ImplChild() {
 
     override fun draw() {
         Drawable.base(parent, config)
@@ -84,7 +90,8 @@ class PPolygon(vararg vertices: Vector2, private val config: RenderConfig = Rend
     }
 }
 
-class PSegment(p1: Vector2, p2: Vector2, private val config: RenderConfig = RenderConfig.default) : Segment(p1, p2), Drawable, Child by ImplChild() {
+class PSegment(p1: Vector2, p2: Vector2, private val config: RenderConfig = RenderConfig.default)
+    : Segment(p1, p2), Drawable, Child by ImplChild() {
 
     override fun draw() {
         Drawable.base(parent, config)
@@ -92,7 +99,8 @@ class PSegment(p1: Vector2, p2: Vector2, private val config: RenderConfig = Rend
     }
 }
 
-class PSlice(radius: Double, theta: Double, private val config: RenderConfig = RenderConfig.default) : Slice(radius, theta), Drawable, Child by ImplChild() {
+class PSlice(radius: Double, theta: Double, private val config: RenderConfig = RenderConfig.default)
+    : Slice(radius, theta), Drawable, Child by ImplChild() {
 
     override fun draw() {
         Drawable.base(parent, config)

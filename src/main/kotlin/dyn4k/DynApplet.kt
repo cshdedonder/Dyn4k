@@ -1,7 +1,7 @@
 package dyn4k
 
+import dyn4k.inject.InjectionScope
 import processing.core.PApplet
-import kotlin.reflect.KProperty
 
 open class DynApplet(scope: InjectionScope = InjectionScope.default) : PApplet() {
     init {
@@ -58,32 +58,5 @@ open class DynApplet(scope: InjectionScope = InjectionScope.default) : PApplet()
         stroke(red.toFloat(), green.toFloat(), blue.toFloat(), alpha.toFloat())
     }
 
-
     fun run() = runSketch()
 }
-
-class InjectionScope {
-    val scope: MutableList<Any> = mutableListOf()
-
-    companion object {
-        val default = InjectionScope()
-    }
-
-    fun register(any: Any) {
-        scope += any
-    }
-
-    inline fun <reified T : Any> get(): T? = scope.find { it is T } as? T
-}
-
-class Inject(val scope: InjectionScope) {
-
-    var any: Any? = null
-
-    inline operator fun <reified T : Any> getValue(thisRef: Any?, property: KProperty<*>): T {
-        return (if (any == null) scope.get<T>()?.also { any = it } else any as? T)
-                ?: throw IllegalStateException("Injection is not initialised")
-    }
-}
-
-fun inject(scope: InjectionScope = InjectionScope.default) = Inject(scope)
