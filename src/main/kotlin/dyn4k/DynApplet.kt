@@ -4,6 +4,7 @@ import dyn4k.inject.InjectionScope
 import processing.core.PApplet
 
 open class DynApplet(scope: InjectionScope = InjectionScope.default) : PApplet() {
+
     init {
         @Suppress("LeakingThis")
         scope.register(this)
