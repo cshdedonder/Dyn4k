@@ -3,9 +3,17 @@ package dyn4k
 import dyn4k.inject.InjectionScope
 import processing.core.PApplet
 
+/**
+ * This class is a wrapper for [processing.core.PApplet] and is meant to be used in the same way. This class registers
+ * itself on creation with the (global, if no other provided) [scope]. Contains also some convenience methods and
+ * kotlinified properties.
+ * @see [processing.core.PApplet]
+ * @see [InjectionScope]
+ */
 open class DynApplet(scope: InjectionScope = InjectionScope.default) : PApplet() {
 
     init {
+        // Register with the scope
         @Suppress("LeakingThis")
         scope.register(this)
     }

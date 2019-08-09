@@ -13,8 +13,7 @@ data class PColor(val red: Int, val green: Int, val blue: Int, val alpha: Int = 
 data class RenderConfig(
         val fill: PColor = PColor.white,
         val stroke: PColor = PColor.black,
-        val width: Float = 2f//,
-//        val grid: Boolean = true
+        val width: Float = 2f
 ) {
     companion object {
         val default: RenderConfig = RenderConfig()
@@ -29,7 +28,7 @@ interface Drawable {
     fun draw()
 
     companion object {
-        fun base(parent: DynApplet, config: RenderConfig) {
+        fun prepare(parent: DynApplet, config: RenderConfig) {
             with(parent) {
                 fill = config.fill
                 stroke = config.stroke
@@ -47,7 +46,7 @@ class PCircle(radius: Double, private val config: RenderConfig = RenderConfig.de
     : Circle(radius), Drawable, Child by ImplChild() {
 
     override fun draw() {
-        Drawable.base(parent, config)
+        Drawable.prepare(parent, config)
         with(center) {
             parent.circle(x, y, radius)
         }
@@ -58,7 +57,7 @@ class PCapsule(width: Double, height: Double, private val config: RenderConfig =
     : Capsule(width, height), Drawable, Child by ImplChild() {
 
     override fun draw() {
-        Drawable.base(parent, config)
+        Drawable.prepare(parent, config)
         // TODO implement
     }
 }
@@ -67,7 +66,7 @@ class PEllipse(width: Double, height: Double, private val config: RenderConfig =
     : Ellipse(width, height), Drawable, Child by ImplChild() {
 
     override fun draw() {
-        Drawable.base(parent, config)
+        Drawable.prepare(parent, config)
         // TODO implement
     }
 }
@@ -76,7 +75,7 @@ class PHalfEllipse(width: Double, height: Double, private val config: RenderConf
     : HalfEllipse(width, height), Drawable, Child by ImplChild() {
 
     override fun draw() {
-        Drawable.base(parent, config)
+        Drawable.prepare(parent, config)
         // TODO implement
     }
 }
@@ -85,7 +84,7 @@ class PPolygon(vararg vertices: Vector2, private val config: RenderConfig = Rend
     : Polygon(*vertices), Drawable, Child by ImplChild() {
 
     override fun draw() {
-        Drawable.base(parent, config)
+        Drawable.prepare(parent, config)
         // TODO implement
     }
 }
@@ -94,7 +93,7 @@ class PSegment(p1: Vector2, p2: Vector2, private val config: RenderConfig = Rend
     : Segment(p1, p2), Drawable, Child by ImplChild() {
 
     override fun draw() {
-        Drawable.base(parent, config)
+        Drawable.prepare(parent, config)
         // TODO implement
     }
 }
@@ -103,7 +102,7 @@ class PSlice(radius: Double, theta: Double, private val config: RenderConfig = R
     : Slice(radius, theta), Drawable, Child by ImplChild() {
 
     override fun draw() {
-        Drawable.base(parent, config)
+        Drawable.prepare(parent, config)
         // TODO implement
     }
 }
