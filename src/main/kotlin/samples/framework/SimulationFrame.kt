@@ -47,7 +47,7 @@ abstract class SimulationFrame(name: String, protected val scale: Double) : JFra
             override fun run() {
                 while (!stopped) {
                     gameLoop()
-                    Thread.sleep(5L)
+                    sleep(5L)
                 }
             }
         }

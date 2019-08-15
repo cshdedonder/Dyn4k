@@ -1,6 +1,7 @@
-package dyn4k
+package dyn4k.geometry
 
-import dyn4k.inject.inject
+import dyn4k.DynApplet
+import dyn4k.delegation.inject
 import org.dyn4j.geometry.Capsule
 import org.dyn4j.geometry.Circle
 

@@ -1,6 +1,7 @@
 package dyn4k
 
-import dyn4k.inject.InjectionScope
+import dyn4k.delegation.InjectionScope
+import dyn4k.geometry.PColor
 import processing.core.PApplet
 
 /**

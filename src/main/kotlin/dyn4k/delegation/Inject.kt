@@ -1,4 +1,4 @@
-package dyn4k.inject
+package dyn4k.delegation
 
 import kotlin.reflect.KProperty
 import kotlin.reflect.full.createInstance
