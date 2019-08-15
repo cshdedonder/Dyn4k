@@ -67,5 +67,22 @@ open class DynApplet(scope: InjectionScope = InjectionScope.default) : PApplet()
         stroke(red.toFloat(), green.toFloat(), blue.toFloat(), alpha.toFloat())
     }
 
+    fun vertex(x: Double, y: Double) {
+        vertex(x.toFloat(), y.toFloat())
+    }
+
+    fun translate(x: Double, y: Double) {
+        translate(x.toFloat(), y.toFloat())
+    }
+
+    fun rotate(angle: Double) {
+        rotate(angle.toFloat())
+    }
+
+    override fun draw() {
+        scale(1f, -1f)
+        translate(0.0, -height.toDouble())
+    }
+
     fun run() = runSketch()
 }

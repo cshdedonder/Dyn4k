@@ -8,9 +8,8 @@ import kotlin.reflect.full.createInstance
  * be called by using [get]. When multiple objects of the same type are present, retrieval is non-deterministic.
  */
 class InjectionScope {
-    private val _scope: MutableList<Any> = mutableListOf()
-    val scope: List<Any>
-        get() = _scope
+    @PublishedApi
+    internal val scope: MutableList<Any> = mutableListOf()
 
     companion object {
         /**
@@ -23,7 +22,7 @@ class InjectionScope {
      * Add [any] to this scope.
      */
     fun register(any: Any) {
-        _scope += any
+        scope += any
     }
 
     /**
@@ -39,10 +38,11 @@ class InjectionScope {
  */
 class Inject(val scope: InjectionScope) {
 
-    var any: Any? = null
+    @PublishedApi
+    internal var any: Any? = null
 
     inline operator fun <reified T : Any> getValue(thisRef: Any?, property: KProperty<*>): T {
-        return if (any == null) scope.get<T>().also { any = it } else any as T
+        return if (this.any == null) scope.get<T>().also { any = it } else any as T
     }
 }
 
